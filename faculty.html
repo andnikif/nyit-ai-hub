@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYIT AI Hub - Faculty</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #0055a2; /* NYIT Blue */
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .logo span {
+            color: #f8c300; /* NYIT Yellow */
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #f8c300; /* NYIT Yellow */
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 85, 162, 0.7), rgba(0, 85, 162, 0.9)), url('https://via.placeholder.com/1500x600') center/cover no-repeat;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+        
+        .breadcrumb {
+            background-color: #e9e9e9;
+            padding: 10px 0;
+        }
+        
+        .breadcrumb ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        
+        .breadcrumb ul li {
+            display: flex;
+            align-items: center;
+        }
+        
+        .breadcrumb ul li:not(:last-child)::after {
+            content: "›";
+            margin: 0 10px;
+            color: #666;
+        }
+        
+        .breadcrumb ul li a {
+            text-decoration: none;
+            color: #0055a2;
+        }
+        
+        .breadcrumb ul li a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 40px 0;
+        }
+        
+        .section-title {
+            margin-bottom: 30px;
+        }
+        
+        .section-title h2 {
+            font-size: 32px;
+            color: #0055a2;
+            margin-bottom: 10px;
+        }
+        
+        .section-title p {
+            color: #666;
+            font-size: 18px;
+        }
+        
+        /* Resources Section */
+        .resources-section {
+            margin-bottom: 60px;
+        }
+        
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .resource-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .resource-card-header {
+            background-color: #0055a2;
+            color: white;
+            padding: 15px 20px;
+        }
+        
+        .resource-card-header h3 {
+            margin: 0;
+            font-size: 22px;
+        }
+        
+        .resource-card-content {
+            padding: 20px;
+        }
+        
+        .resource-card-content p {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+        
+        .resource-card-list {
+            margin: 0;
+            padding: 0 0 0 20px;
+        }
+        
+        .resource-card-list li {
+            margin-bottom: 8px;
+        }
+        
+        .resource-card-list li a {
+            color: #0055a2;
+            text-decoration: none;
+        }
+        
+        .resource-card-list li a:hover {
+            text-decoration: underline;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: #0055a2;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            margin-top: 15px;
+        }
+        
+        .cta-button:hover {
+            background-color: #003d75;
+        }
+        
+        /* Research Section */
+        .research-section {
+            background-color: #f9f9f9;
+            padding: 60px 0;
+            margin-bottom: 60px;
+        }
+        
+        .research-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .research-item {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .research-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .research-content {
+            padding: 25px;
+        }
+        
+        .research-content h3 {
+            margin-top: 0;
+            color: #0055a2;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        
+        .research-content p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        /* Workshops Section */
+        .workshops-section {
+            margin-bottom: 60px;
+        }
+        
+        .workshops-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .workshop-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .workshop-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .workshop-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .workshop-content {
+            padding: 25px;
+        }
+        
+        .workshop-date {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .workshop-content h3 {
+            margin-top: 0;
+            color: #0055a2;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        
+        .workshop-content p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        /* Faculty Insights Section */
+        .insights-section {
+            background-color: #f0f0f0;
+            padding: 60px 0;
+            margin-bottom: 60px;
+        }
+        
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .insight-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 25px;
+        }
+        
+        .insight-content {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .insight-content::before {
+            content: '"';
+            font-size: 60px;
+            color: #e6e6e6;
+            position: absolute;
+            top: -20px;
+            left: -15px;
+            z-index: -1;
+        }
+        
+        .insight-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .insight-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+            margin-right: 15px;
+        }
+        
+        .insight-author-info h4 {
+            margin: 0;
+            color: #0055a2;
+        }
+        
+        .insight-author-info p {
+            margin: 5px 0 0;
+            color: #777;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            background-color: #0055a2;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .contact-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .contact-section p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .cta-button-light {
+            display: inline-block;
+            background-color: white;
+            color: #0055a2;
+            padding: 12px 25px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button-light:hover {
+            background-color: #f8c300;
+            color: #0055a2;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #00294d;
+            color: white;
+            padding: 40px 0;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            color: #f8c300;
+            margin-bottom: 20px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .resources-grid,
+            .research-highlights,
+            .workshops-list,
+            .insights-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">NYIT <span>AI Hub</span></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Faculty Resources & Opportunities</h1>
+            <p>Access teaching materials, research opportunities, and professional development resources to enhance your AI integration.</p>
+            <a href="#resources" class="cta-button">Explore Resources</a>
+        </div>
+    </section>
+    
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li>Faculty</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Teaching Resources Section -->
+    <section id="resources" class="main-content resources-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Teaching Resources</h2>
+                <p>Enhance your courses with these AI integration resources and teaching materials.</p>
+            </div>
+            
+            <div class="resources-grid">
+                <!-- Resource Card 1 -->
+                <div class="resource-card">
+                    <div class="resource-card-header">
+                        <h3>AI in the Classroom</h3>
+                    </div>
+                    <div class="resource-card-content">
+                        <p>Practical guides and frameworks for incorporating AI tools and concepts into your curriculum.</p>
+                        <ul class="resource-card-list">
+                            <li><a href="#">AI Ethics Discussion Guide</a></li>
+                            <li><a href="#">Generative AI Assignment Templates</a></li>
+                            <li><a href="#">AI Tool Reference Guide for Faculty</a></li>
+                            <li><a href="#">Best Practices for AI Integration</a></li>
+                        </ul>
+                        <a href="#" class="cta-button">Access Resources</a>
+                    </div>
+                </div>
+                
+                <!-- Resource Card 2 -->
+                <div class="resource-card">
+                    <div class="resource-card-header">
+                        <h3>Sample Lesson Plans</h3>
+                    </div>
+                    <div class="resource-card-content">
+                        <p>Ready-to-use lesson plans that incorporate AI concepts across various disciplines.</p>
+                        <ul class="resource-card-list">
+                            <li><a href="#">Introduction to Neural Networks (CS)</a></li>
+                            <li><a href="#">AI in Marketing Analytics (Business)</a></li>
+                            <li><a href="#">Machine Learning for Healthcare (Medicine)</a></li>
+                            <li><a href="#">AI in Creative Writing (Humanities)</a></li>
+                        </ul>
+                        <a href="#" class="cta-button">View Lesson Plans</a>
+                    </div>
+                </div>
+                
+                <!-- Resource Card 3 -->
+                <div class="resource-card">
+                    <div class="resource-card-header">
+                        <h3>Assessment Tools</h3>
+                    </div>
+                    <div class="resource-card-content">
+                        <p>Evaluation methods and rubrics designed for AI-enhanced coursework and projects.</p>
+                        <ul class="resource-card-list">
+                            <li><a href="#">AI Project Evaluation Rubric</a></li>
+                            <li><a href="#">AI Ethics Assessment Framework</a></li>
+                            <li><a href="#">Detecting AI-Generated Content Guide</a></li>
+                            <li><a href="#">AI-Assisted Learning Assessment</a></li>
+                        </ul>
+                        <a href="#" class="cta-button">Access Assessment Tools</a>
+                    </div>
+                </div>
+                
+                <!-- Resource Card 4 -->
+                <div class="resource-card">
+                    <div class="resource-card-header">
+                        <h3>Technology Access</h3>
+                    </div>
+                    <div class="resource-card-content">
+                        <p>Information about AI tools and platforms available to NYIT faculty members.</p>
+                        <ul class="resource-card-list">
+                            <li><a href="#">NYIT AI Computing Resources</a></li>
+                            <li><a href="#">Faculty Software Licenses</a></li>
+                            <li><a href="#">Cloud Computing Access</a></li>
+                            <li><a href="#">Request Research Computing Support</a></li>
+                        </ul>
+                        <a href="#" class="cta-button">Request Access</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Research Opportunities -->
+    <section class="research-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Research Opportunities</h2>
+                <p>Discover funding, collaboration, and publication opportunities for AI-related research.</p>
+            </div>
+            
+            <div class="research-highlights">
+                <!-- Research Item 1 -->
+                <div class="research-item">
+                    <div class="research-img" style="background-image: url('https://via.placeholder.com/500x300')"></div>
+                    <div class="research-content">
+                        <h3>Internal Research Grants</h3>
+                        <p>The NYIT AI Initiative provides seed funding for innovative AI research projects. Next application deadline: May 15, 2025.</p>
+                        <a href="#" class="cta-button">Apply for Funding</a>
+                    </div>
+                </div>
+                
+                <!-- Research Item 2 -->
+                <div class="research-item">
+                    <div class="research-img" style="background-image: url('https://via.placeholder.com/500x300')"></div>
+                    <div class="research-content">
+                        <h3>Industry Partnerships</h3>
+                        <p>Connect with our network of industry partners looking to collaborate on applied AI research projects and solutions.</p>
+                        <a href="#" class="cta-button">Explore Partnerships</a>
+                    </div>
+                </div>
+                
+                <!-- Research Item 3 -->
+                <div class="research-item">
+                    <div class="research-img" style="background-image: url('https://via.placeholder.com/500x300')"></div>
+                    <div class="research-content">
+                        <h3>Interdisciplinary Collaborations</h3>
+                        <p>Join cross-disciplinary research teams exploring AI applications across multiple fields and domains.</p>
+                        <a href="#" class="cta-button">Find Collaborators</a>
+                    </div>
+                </div>
+                
+                <!-- Research Item 4 -->
+                <div class="research-item">
+                    <div class="research-img" style="background-image: url('https://via.placeholder.com/500x300')"></div>
+                    <div class="research-content">
+                        <h3>Publication Opportunities</h3>
+                        <p>Submit your AI research to the NYIT Journal of AI Innovation or present at our annual AI symposium.</p>
+                        <a href="#" class="cta-button">Submission Guidelines</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Workshops & Training -->
+    <section class="workshops-section main-content">
+        <div class="container">
+            <div class="section-title">
+                <h2>Faculty Development & Training</h2>
+                <p>Enhance your AI skills and knowledge through our professional development programs.</p>
+            </div>
+            
+            <div class="workshops-list">
+                <!-- Workshop 1 -->
+                <div class="workshop-card">
+                    <div class="workshop-img" style="background-image: url('https://via.placeholder.com/500x300')"></div>
+                    <div class="workshop-content">
+                        <div class="workshop-date">April 5-6, 2025</div>
+                        <h3>AI Tools for Educators Workshop</h3>
+                        <p>A hands-on, two-day workshop introducing practical AI tools and techniques for classroom integration. No prior AI experience required.</p>
+                        <a href="#" class="cta-button">Register</a>
+                    </div>
+                </div>
+                
+                <!-- Workshop 2 -->
+                <div class="workshop-card">
+                    <div class="workshop-img" style="background-image: url('https://via.placeholder.com/500x300')"></div>
+                    <div class="workshop-content">
+                        <div class="workshop-date">May 12, 2025</div>
+                        <h3>Generative AI in Higher Education</h3>
+                        <p>Explore the implications, challenges, and opportunities of ChatGPT and other generative AI tools in academic settings.</p>
+                        <a href="#" class="cta-button">Register</a>
+                    </div>
+                </div>
+                
+                <!-- Workshop 3 -->
+                <div class="workshop-card">
+                    <div class="workshop-img" style="background-image: url('https://via.placeholder.com/500x300')"></div>
+                    <div class="workshop-content">
+                        <div class="workshop-date">June 8-July 10, 2025</div>
+                        <h3>AI Certificate Program for Faculty</h3>
+                        <p>A comprehensive five-week program providing in-depth knowledge of AI concepts, tools, and pedagogical applications.</p>
+                        <a href="#" class="cta-button">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Faculty Insights -->
+    <section class="insights-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Faculty Insights</h2>
+                <p>Learn from colleagues who have successfully integrated AI into their teaching and research.</p>
+            </div>
+            
+            <div class="insights-grid">
+                <!-- Insight 1 -->
+                <div class="insight-card">
+                    <div class="insight-content">
+                        <p>Integrating AI tools into my marketing courses has transformed how students approach data analysis. They're now able to uncover insights that would have been impossible to find manually, preparing them for the real-world marketing landscape.</p>
+                    </div>
+                    <div class="insight-author">
+                        <div class="insight-avatar" style="background-image: url('https://via.placeholder.com/100')"></div>
+                        <div class="insight-author-info">
+                            <h4>Dr. Jennifer Martinez</h4>
+                            <p>School of Management</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Insight 2 -->
+                <div class="insight-card">
+                    <div class="insight-content">
+                        <p>The resources provided by the AI Hub have been invaluable for redesigning my engineering curriculum. My students now engage with practical AI applications that directly relate to their future careers.</p>
+                    </div>
+                    <div class="insight-author">
+                        <div class="insight-avatar" style="background-image: url('https://via.placeholder.com/100')"></div>
+                        <div class="insight-author-info">
+                            <h4>Dr. Robert Chen</h4>
+                            <p>School of Engineering</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Insight 3 -->
+                <div class="insight-card">
+                    <div class="insight-content">
+                        <p>The interdisciplinary collaboration facilitated by the AI Hub led to a breakthrough in our healthcare research project. We're now applying for major external funding to expand this work.</p>
+                    </div>
+                    <div class="insight-author">
+                        <div class="insight-avatar" style="background-image: url('https://via.placeholder.com/100')"></div>
+                        <div class="insight-author-info">
+                            <h4>Dr. Sophia Williams</h4>
+                            <p>School of Health Professions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <h2>Get Support & Assistance</h2>
+            <p>Have questions about integrating AI into your teaching or research? Our team is here to help.</p>
+            <a href="#" class="cta-button-light">Request Faculty Consultation</a>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="current-students.html">For Students</a></li>
+                        <li><a href="external-partners.html">For Partners</a></li>
+                        <li><a href="donors.html">For Donors</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="https://www.nyit.edu" target="_blank">NYIT Main Website</a></li>
+                        <li><a href="https://www.linkedin.com/school/new-york-institute-of-technology/" target="_blank">LinkedIn</a></li>
+                        <li><a href="https://twitter.com/nyit" target="_blank">Twitter</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 NYIT AI Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

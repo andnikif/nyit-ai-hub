@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYIT AI Hub - External Partners</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #0055a2; /* NYIT Blue */
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .logo span {
+            color: #f8c300; /* NYIT Yellow */
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #f8c300; /* NYIT Yellow */
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 85, 162, 0.7), rgba(0, 85, 162, 0.9)), url('https://via.placeholder.com/1500x600') center/cover no-repeat;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+        
+        .breadcrumb {
+            background-color: #e9e9e9;
+            padding: 10px 0;
+        }
+        
+        .breadcrumb ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        
+        .breadcrumb ul li {
+            display: flex;
+            align-items: center;
+        }
+        
+        .breadcrumb ul li:not(:last-child)::after {
+            content: "›";
+            margin: 0 10px;
+            color: #666;
+        }
+        
+        .breadcrumb ul li a {
+            text-decoration: none;
+            color: #0055a2;
+        }
+        
+        .breadcrumb ul li a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 40px 0;
+        }
+        
+        .section-title {
+            margin-bottom: 30px;
+        }
+        
+        .section-title h2 {
+            font-size: 32px;
+            color: #0055a2;
+            margin-bottom: 10px;
+        }
+        
+        .section-title p {
+            color: #666;
+            font-size: 18px;
+        }
+        
+        /* Partnership Opportunities */
+        .partnership-section {
+            margin-bottom: 60px;
+        }
+        
+        .partnership-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .partnership-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .partnership-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .partnership-card-header {
+            background-color: #0055a2;
+            color: white;
+            padding: 15px 20px;
+        }
+        
+        .partnership-card-header h3 {
+            margin: 0;
+            font-size: 22px;
+        }
+        
+        .partnership-card-content {
+            padding: 20px;
+        }
+        
+        .partnership-card-content p {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+        
+        .partnership-benefits {
+            margin: 0 0 20px 0;
+            padding: 0 0 0 20px;
+        }
+        
+        .partnership-benefits li {
+            margin-bottom: 8px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: #0055a2;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            margin-top: 15px;
+        }
+        
+        .cta-button:hover {
+            background-color: #003d75;
+        }
+        
+        /* Success Stories */
+        .success-stories {
+            background-color: #f9f9f9;
+            padding: 60px 0;
+            margin-bottom: 60px;
+        }
+        
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .story-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .story-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .story-content {
+            padding: 25px;
+        }
+        
+        .story-content h3 {
+            margin-top: 0;
+            color: #0055a2;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        
+        .story-content p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .story-partner {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .partner-logo {
+            width: 60px;
+            height: 60px;
+            background-color: #f0f0f0;
+            border-radius: 50%;
+            margin-right: 15px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        .partner-name {
+            font-weight: bold;
+            color: #0055a2;
+        }
+        
+        /* Expertise Section */
+        .expertise-section {
+            margin-bottom: 60px;
+        }
+        
+        .expertise-areas {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .expertise-card {
+            text-align: center;
+            padding: 30px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .expertise-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .expertise-icon {
+            font-size: 48px;
+            color: #0055a2;
+            margin-bottom: 20px;
+        }
+        
+        .expertise-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #0055a2;
+        }
+        
+        .expertise-card p {
+            color: #666;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            background-color: #0055a2;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .contact-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .contact-section p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .cta-button-light {
+            display: inline-block;
+            background-color: white;
+            color: #0055a2;
+            padding: 12px 25px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button-light:hover {
+            background-color: #f8c300;
+            color: #0055a2;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #00294d;
+            color: white;
+            padding: 40px 0;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            color: #f8c300;
+            margin-bottom: 20px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .partnership-types,
+            .stories-grid,
+            .expertise-areas {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">NYIT <span>AI Hub</span></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Partner with NYIT AI Hub</h1>
+            <p>Collaborate with our experts and students to drive innovation and tackle industry challenges with AI solutions.</p>
+            <a href="#partnerships" class="cta-button">Explore Partnerships</a>
+        </div>
+    </section>
+    
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li>External Partners</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Partnership Opportunities -->
+    <section id="partnerships" class="main-content partnership-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Partnership Opportunities</h2>
+                <p>Discover how your organization can collaborate with NYIT's AI Hub to drive innovation and achieve mutual success.</p>
+            </div>
+            
+            <div class="partnership-types">
+                <!-- Partnership Card 1 -->
+                <div class="partnership-card">
+                    <div class="partnership-card-header">
+                        <h3>Research Collaborations</h3>
+                    </div>
+                    <div class="partnership-card-content">
+                        <p>Partner with our faculty and researchers on cutting-edge AI projects that address real-world problems in your industry.</p>
+                        <ul class="partnership-benefits">
+                            <li>Access to specialized AI expertise</li>
+                            <li>Joint intellectual property opportunities</li>
+                            <li>Co-authored research publications</li>
+                            <li>Access to research facilities and resources</li>
+                        </ul>
+                        <a href="#" class="cta-button">Explore Research Partnerships</a>
+                    </div>
+                </div>
+                
+                <!-- Partnership Card 2 -->
+                <div class="partnership-card">
+                    <div class="partnership-card-header">
+                        <h3>Student Projects & Internships</h3>
+                    </div>
+                    <div class="partnership-card-content">
+                        <p>Engage with talented NYIT students through sponsored projects, internships, and cooperative learning opportunities.</p>
+                        <ul class="partnership-benefits">
+                            <li>Tap into fresh perspectives and innovative thinking</li>
+                            <li>Identify potential future employees</li>
+                            <li>Cost-effective solutions to business challenges</li>
+                            <li>Fulfill corporate social responsibility goals</li>
+                        </ul>
+                        <a href="#" class="cta-button">Partner with Students</a>
+                    </div>
+                </div>
+                
+                <!-- Partnership Card 3 -->
+                <div class="partnership-card">
+                    <div class="partnership-card-header">
+                        <h3>Corporate Training & Workshops</h3>
+                    </div>
+                    <div class="partnership-card-content">
+                        <p>Equip your workforce with AI skills through customized training programs and workshops developed by NYIT experts.</p>
+                        <ul class="partnership-benefits">
+                            <li>Tailored curriculum for your organization's needs</li>
+                            <li>Hands-on learning experiences</li>
+                            <li>On-site or virtual delivery options</li>
+                            <li>Continuing education credits available</li>
+                        </ul>
+                        <a href="#" class="cta-button">Explore Training Programs</a>
+                    </div>
+                </div>
+                
+                <!-- Partnership Card 4 -->
+                <div class="partnership-card">
+                    <div class="partnership-card-header">
+                        <h3>Technology Transfer & Licensing</h3>
+                    </div>
+                    <div class="partnership-card-content">
+                        <p>License AI technologies developed at NYIT or collaborate on commercializing research innovations.</p>
+                        <ul class="partnership-benefits">
+                            <li>Access to patent-protected technologies</li>
+                            <li>Flexible licensing arrangements</li>
+                            <li>Support for technology implementation</li>
+                            <li>Opportunities for joint ventures</li>
+                        </ul>
+                        <a href="#" class="cta-button">Explore Licensing Options</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Success Stories -->
+    <section class="success-stories">
+        <div class="container">
+            <div class="section-title">
+                <h2>Partnership Success Stories</h2>
+                <p>Learn how organizations have benefited from collaborating with NYIT's AI Hub.</p>
+            </div>
+            
+            <div class="stories-grid">
+                <!-- Success Story 1 -->
+                <div class="story-card">
+                    <div class="story-img" style="background-image: url('https://via.placeholder.com/500x300')"></div>
+                    <div class="story-content">
+                        <div class="story-partner">
+                            <div class="partner-logo" style="background-image: url('https://via.placeholder.com/100')"></div>
+                            <div class="partner-name">NVIDIA</div>
+                        </div>
+                        <h3>Advanced Computer Vision Research</h3>
+                        <p>Our partnership with NYIT resulted in breakthrough computer vision algorithms that improved our product efficiency by 35% and opened new market opportunities.</p>
+                        <a href="#" class="cta-button">Read Full Case Study</a>
+                    </div>
+                </div>
+                
+                <!-- Success Story 2 -->
+                <div class="story-card">
+                    <div class="story-img" style="background-image: url('https://via.placeholder.com/500x300')"></div>
+                    <div class="story-content">
+                        <div class="story-partner">
+                            <div class="partner-logo" style="background-image: url('https://via.placeholder.com/100')"></div>
+                            <div class="partner-name">HelioCampus</div>
+                        </div>
+                        <h3>Predictive Analytics Implementation</h3>
+                        <p>NYIT students developed a predictive analytics model that has transformed how we approach customer segmentation, resulting in a 28% increase in conversion rates.</p>
+                        <a href="#" class="cta-button">Read Full Case Study</a>
+                    </div>
+                </div>
+                
+                <!-- Success Story 3 -->
+                <div class="story-card">
+                    <div class="story-img" style="background-image: url('https://via.placeholder.com/500x300')"></div>
+                    <div class="story-content">
+                        <div class="story-partner">
+                            <div class="partner-logo" style="background-image: url('https://via.placeholder.com/100')"></div>
+                            <div class="partner-name">TechStart Inc.</div>
+                        </div>
+                        <h3>Natural Language Processing Innovation</h3>
+                        <p>Our collaborative research with NYIT faculty resulted in a patent-pending NLP technology that has become a cornerstone of our customer service platform.</p>
+                        <a href="#" class="cta-button">Read Full Case Study</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Expertise Areas -->
+    <section class="expertise-section main-content">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Areas of Expertise</h2>
+                <p>NYIT AI Hub offers specialized knowledge and capabilities across a wide range of AI domains.</p>
+            </div>
+            
+            <div class="expertise-areas">
+                <div class="expertise-card">
+                    <div class="expertise-icon">🤖</div>
+                    <h3>Machine Learning</h3>
+                    <p>Deep learning, neural networks, supervised and unsupervised learning algorithms, and reinforcement learning.</p>
+                </div>
+                
+                <div class="expertise-card">
+                    <div class="expertise-icon">👁️</div>
+                    <h3>Computer Vision</h3>
+                    <p>Image recognition, object detection, facial recognition, video analysis, and augmented reality.</p>
+                </div>
+                
+                <div class="expertise-card">
+                    <div class="expertise-icon">💬</div>
+                    <h3>Natural Language Processing</h3>
+                    <p>Sentiment analysis, language translation, text generation, chatbots, and voice recognition systems.</p>
+                </div>
+                
+                <div class="expertise-card">
+                    <div class="expertise-icon">📊</div>
+                    <h3>Data Analytics</h3>
+                    <p>Big data processing, predictive analytics, data visualization, and statistical modeling.</p>
+                </div>
+                
+                <div class="expertise-card">
+                    <div class="expertise-icon">🔍</div>
+                    <h3>AI Ethics & Governance</h3>
+                    <p>Ethical AI development, bias detection, transparency frameworks, and regulatory compliance.</p>
+                </div>
+                
+                <div class="expertise-card">
+                    <div class="expertise-icon">🏥</div>
+                    <h3>AI in Healthcare</h3>
+                    <p>Medical imaging analysis, diagnostic support systems, personalized medicine, and health data mining.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <h2>Ready to Partner with NYIT?</h2>
+            <p>Contact our partnership team to discuss how we can collaborate to meet your organization's goals.</p>
+            <div class="contact-buttons">
+                <a href="#" class="cta-button-light">Schedule a Consultation</a>
+                <a href="#" class="cta-button-light">Request Partnership Information</a>
+                <a href="#" class="cta-button-light">Visit Our Campus</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="current-students.html">For Students</a></li>
+                        <li><a href="faculty.html">For Faculty</a></li>
+                        <li><a href="donors.html">For Donors</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="https://www.nyit.edu" target="_blank">NYIT Main Website</a></li>
+                        <li><a href="https://www.linkedin.com/school/new-york-institute-of-technology/" target="_blank">LinkedIn</a></li>
+                        <li><a href="https://twitter.com/nyit" target="_blank">Twitter</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 NYIT AI Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

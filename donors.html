@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYIT AI Hub - Donors</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #0055a2; /* NYIT Blue */
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .logo span {
+            color: #f8c300; /* NYIT Yellow */
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #f8c300; /* NYIT Yellow */
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 85, 162, 0.7), rgba(0, 85, 162, 0.9)), url('https://via.placeholder.com/1500x600') center/cover no-repeat;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+        
+        .breadcrumb {
+            background-color: #e9e9e9;
+            padding: 10px 0;
+        }
+        
+        .breadcrumb ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        
+        .breadcrumb ul li {
+            display: flex;
+            align-items: center;
+        }
+        
+        .breadcrumb ul li:not(:last-child)::after {
+            content: "›";
+            margin: 0 10px;
+            color: #666;
+        }
+        
+        .breadcrumb ul li a {
+            text-decoration: none;
+            color: #0055a2;
+        }
+        
+        .breadcrumb ul li a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 40px 0;
+        }
+        
+        .section-title {
+            margin-bottom: 30px;
+        }
+        
+        .section-title h2 {
+            font-size: 32px;
+            color: #0055a2;
+            margin-bottom: 10px;
+        }
+        
+        .section-title p {
+            color: #666;
+            font-size: 18px;
+        }
+        
+        /* Impact Stories */
+        .impact-stories {
+            margin-bottom: 60px;
+        }
+        
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .impact-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .impact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .impact-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .impact-content {
+            padding: 25px;
+        }
+        
+        .impact-content h3 {
+            margin-top: 0;
+            color: #0055a2;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        
+        .impact-content p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .impact-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .stat {
+            text-align: center;
+            flex: 1;
+            min-width: 100px;
+            margin-bottom: 10px;
+        }
+        
+        .stat-number {
+            font-size: 28px;
+            font-weight: bold;
+            color: #0055a2;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: #0055a2;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #003d75;
+        }
+        
+        /* Funding Opportunities */
+        .funding-opportunities {
+            background-color: #f9f9f9;
+            padding: 60px 0;
+            margin-bottom: 60px;
+        }
+        
+        .opportunities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .opportunity-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .opportunity-header {
+            background-color: #0055a2;
+            color: white;
+            padding: 20px;
+        }
+        
+        .opportunity-header h3 {
+            margin: 0;
+            font-size: 22px;
+        }
+        
+        .opportunity-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .opportunity-content p {
+            margin-top: 0;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        
+        .funding-amount {
+            font-size: 24px;
+            font-weight: bold;
+            color: #0055a2;
+            margin-bottom: 15px;
+        }
+        
+        /* Recognition Section */
+        .recognition-section {
+            margin-bottom: 60px;
+        }
+        
+        .recognition-levels {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .recognition-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            padding: 30px;
+            transition: transform 0.3s;
+        }
+        
+        .recognition-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .recognition-level {
+            font-size: 24px;
+            font-weight: bold;
+            color: #0055a2;
+            margin-bottom: 10px;
+        }
+        
+        .recognition-amount {
+            font-size: 18px;
+            color: #333;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 15px;
+        }
+        
+        .recognition-benefits {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+            text-align: left;
+        }
+        
+        .recognition-benefits li {
+            padding: 5px 0 5px 25px;
+            position: relative;
+        }
+        
+        .recognition-benefits li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #0055a2;
+        }
+        
+        /* Donor Wall */
+        .donor-wall {
+            background-color: #f0f0f0;
+            padding: 60px 0;
+            margin-bottom: 60px;
+        }
+        
+        .donor-categories {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+        
+        .donor-category {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .donor-category h3 {
+            color: #0055a2;
+            font-size: 24px;
+            margin-top: 0;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f8c300;
+        }
+        
+        .donor-list {
+            columns: 3;
+            column-gap: 30px;
+        }
+        
+        .donor-list p {
+            margin: 0 0 10px 0;
+            break-inside: avoid;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            background-color: #0055a2;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .contact-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .contact-section p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .cta-button-light {
+            display: inline-block;
+            background-color: white;
+            color: #0055a2;
+            padding: 12px 25px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button-light:hover {
+            background-color: #f8c300;
+            color: #0055a2;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #00294d;
+            color: white;
+            padding: 40px 0;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            color: #f8c300;
+            margin-bottom: 20px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .impact-grid,
+            .opportunities-grid,
+            .recognition-levels {
+                grid-template-columns: 1fr;
+            }
+            
+            .donor-list {
+                columns: 1;
+            }
+            
+            .contact-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">NYIT <span>AI Hub</span></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Support the Future of AI at NYIT</h1>
+            <p>Your generous support enables groundbreaking research, expands educational opportunities, and accelerates AI innovation for the greater good.</p>
+            <a href="#impact" class="cta-button">See Your Impact</a>
+        </div>
+    </section>
+    
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li>Donors</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Impact Stories -->
+    <section id="impact" class="main-content impact-stories">
+        <div class="container">
+            <div class="section-title">
+                <h2>Your Impact in Action</h2>
+                <p>See how donor support has transformed AI education and research at NYIT.</p>
+            </div>
+            
+            <div class="impact-grid">
+                <!-- Impact Story 1 -->
+                <div class="impact-card">
+                    <div class="impact-img" style="background-image: url('https://via.placeholder.com/500x300')"></div>
+                    <div class="impact-content">
+                        <h3>Advanced AI Research Lab</h3>
+                        <div class="impact-stats">
+                            <div class="stat">
+                                <div class="stat-number">$1.2M</div>
+                                <div class="stat-label">Total Funded</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">18</div>
+                                <div class="stat-label">Research Projects</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">42</div>
+                                <div class="stat-label">Students Involved</div>
+                            </div>
+                        </div>
+                        <p>The Johnson Family AI Research Lab provides cutting-edge computing resources for students and faculty pursuing advanced AI research, resulting in 12 published papers and 3 patent applications in the past year.</p>
+                        <a href="#" class="cta-button">Read Full Story</a>
+                    </div>
+                </div>
+                
+                <!-- Impact Story 2 -->
+                <div class="impact-card">
+                    <div class="impact-img" style="background-image: url('https://via.placeholder.com/500x300')"></div>
+                    <div class="impact-content">
+                        <h3>AI Scholarship Program</h3>
+                        <div class="impact-stats">
+                            <div class="stat">
+                                <div class="stat-number">24</div>
+                                <div class="stat-label">Scholars Supported</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">$450K</div>
+                                <div class="stat-label">Total Funding</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">100%</div>
+                                <div class="stat-label">Graduation Rate</div>
+                            </div>
+                        </div>
+                        <p>The Smith Foundation AI Scholarship has enabled 24 talented students from underrepresented backgrounds to pursue degrees in AI-related fields, with all graduates securing positions at leading tech companies.</p>
+                        <a href="#" class="cta-button">Read Full Story</a>
+                    </div>
+                </div>
+                
+                <!-- Impact Story 3 -->
+                <div class="impact-card">
+                    <div class="impact-img" style="background-image: url('https://via.placeholder.com/500x300')"></div>
+                    <div class="impact-content">
+                        <h3>AI in Healthcare Initiative</h3>
+                        <div class="impact-stats">
+                            <div class="stat">
+                                <div class="stat-number">5</div>
+                                <div class="stat-label">Hospital Partners</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">$750K</div>
+                                <div class="stat-label">Grant Funding</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">3</div>
+                                <div class="stat-label">Patent Filings</div>
+                            </div>
+                        </div>
+                        <p>The Rodriguez Healthcare AI Fund has supported interdisciplinary research between NYIT's computer science and medical schools, developing innovative diagnostic tools that are now being tested in five regional hospitals.</p>
+                        <a href="#" class="cta-button">Read Full Story</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Funding Opportunities -->
+    <section class="funding-opportunities">
+        <div class="container">
+            <div class="section-title">
+                <h2>Current Funding Priorities</h2>
+                <p>Explore high-impact opportunities to advance AI education and research at NYIT.</p>
+            </div>
+            
+            <div class="opportunities-grid">
+                <!-- Opportunity 1 -->
+                <div class="opportunity-card">
+                    <div class="opportunity-header">
+                        <h3>AI for Social Good Fund</h3>
+                    </div>
+                    <div class="opportunity-content">
+                        <div class="funding-amount">$500,000 Goal</div>
+                        <p>Support student and faculty projects that apply AI solutions to pressing social challenges in healthcare, climate change, education, and economic equity.</p>
+                        <ul class="recognition-benefits">
+                            <li>Fund innovative student-led AI projects with social impact</li>
+                            <li>Support faculty research addressing community needs</li>
+                            <li>Create partnerships with nonprofit organizations</li>
+                            <li>Sponsor annual AI for Good Challenge competition</li>
+                        </ul>
+                        <a href="#" class="cta-button">Support This Initiative</a>
+                    </div>
+                </div>
+                
+                <!-- Opportunity 2 -->
+                <div class="opportunity-card">
+                    <div class="opportunity-header">
+                        <h3>Emerging Technology Lab</h3>
+                    </div>
+                    <div class="opportunity-content">
+                        <div class="funding-amount">$1,200,000 Goal</div>
+                        <p>Help establish a state-of-the-art facility equipped with advanced hardware and software for students and faculty to explore cutting-edge AI technologies.</p>
+                        <ul class="recognition-benefits">
+                            <li>Latest GPU computing infrastructure</li>
+                            <li>Advanced robotics and IoT equipment</li>
+                            <li>Virtual and augmented reality systems</li>
+                            <li>Professional-grade motion capture studio</li>
+                        </ul>
+                        <a href="#" class="cta-button">Support This Initiative</a>
+                    </div>
+                </div>
+                
+                <!-- Opportunity 3 -->
+                <div class="opportunity-card">
+                    <div class="opportunity-header">
+                        <h3>AI Scholarship Endowment</h3>
+                    </div>
+                    <div class="opportunity-content">
+                        <div class="funding-amount">$2,000,000 Goal</div>
+                        <p>Create a permanent endowment to provide scholarships for talented students pursuing degrees in AI-related fields, with emphasis on increasing diversity in tech.</p>
+                        <ul class="recognition-benefits">
+                            <li>Tuition support for undergraduate and graduate students</li>
+                            <li>Priority for students from underrepresented groups</li>
+                            <li>Mentorship opportunities with industry partners</li>
+                            <li>Research stipends for promising scholars</li>
+                        </ul>
+                        <a href="#" class="cta-button">Support This Initiative</a>
+                    </div>
+                </div>
+                
+                <!-- Opportunity 4 -->
+                <div class="opportunity-card">
+                    <div class="opportunity-header">
+                        <h3>Distinguished Lecture Series</h3>
+                    </div>
+                    <div class="opportunity-content">
+                        <div class="funding-amount">$250,000 Goal</div>
+                        <p>Bring world-renowned AI experts to campus for public lectures, student workshops, and faculty collaborations to inspire and inform our community.</p>
+                        <ul class="recognition-benefits">
+                            <li>Quarterly lectures from industry leaders and researchers</li>
+                            <li>Hands-on workshops for students and faculty</li>
+                            <li>Networking events with invited speakers</li>
+                            <li>Recorded content for broader community access</li>
+                        </ul>
+                        <a href="#" class="cta-button">Support This Initiative</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Recognition Section -->
+    <section class="recognition-section main-content">
+        <div class="container">
+            <div class="section-title">
+                <h2>Donor Recognition</h2>
+                <p>NYIT is proud to recognize the generosity of our donors through various acknowledgment opportunities.</p>
+            </div>
+            
+            <div class="recognition-levels">
+                <!-- Recognition Level 1 -->
+                <div class="recognition-card">
+                    <div class="recognition-level">Innovator</div>
+                    <div class="recognition-amount">$5,000 - $24,999</div>
+                    <ul class="recognition-benefits">
+                        <li>Recognition on digital donor wall</li>
+                        <li>Annual AI Hub report</li>
+                        <li>Invitation to annual donor reception</li>
+                        <li>AI Hub newsletter subscription</li>
+                    </ul>
+                </div>
+                
+                <!-- Recognition Level 2 -->
+                <div class="recognition-card">
+                    <div class="recognition-level">Visionary</div>
+                    <div class="recognition-amount">$25,000 - $99,999</div>
+                    <ul class="recognition-benefits">
+                        <li>All Innovator benefits</li>
+                        <li>Named project or scholarship</li>
+                        <li>VIP invitations to AI Hub events</li>
+                        <li>Private tours of AI research facilities</li>
+                    </ul>
+                </div>
+                
+                <!-- Recognition Level 3 -->
+                <div class="recognition-card">
+                    <div class="recognition-level">Pioneer</div>
+                    <div class="recognition-amount">$100,000 - $499,999</div>
+                    <ul class="recognition-benefits">
+                        <li>All Visionary benefits</li>
+                        <li>Permanent recognition plaque</li>
+                        <li>Annual meeting with AI Hub leadership</li>
+                        <li>Student/faculty research presentations</li>
+                    </ul>
+                </div>
+                
+                <!-- Recognition Level 4 -->
+                <div class="recognition-card">
+                    <div class="recognition-level">Transformer</div>
+                    <div class="recognition-amount">$500,000+</div>
+                    <ul class="recognition-benefits">
+                        <li>All Pioneer benefits</li>
+                        <li>Named lab, center, or program</li>
+                        <li>Advisory board membership opportunity</li>
+                        <li>Customized recognition opportunities</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Donor Wall -->
+    <section class="donor-wall">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Generous Supporters</h2>
+                <p>We gratefully acknowledge the individuals, foundations, and corporations whose support has made the NYIT AI Hub possible.</p>
+            </div>
+            
+            <div class="donor-categories">
+                <!-- Transformer Donors -->
+                <div class="donor-category">
+                    <h3>Transformer Circle ($500,000+)</h3>
+                    <div class="donor-list">
+                        <p>The Johnson Family Foundation</p>
+                        <p>Rodriguez Healthcare Technologies, Inc.</p>
+                        <p>NVIDIA Corporation</p>
+                        <p>Sarah & Robert Smith</p>
+                    </div>
+                </div>
+                
+                <!-- Pioneer Donors -->
+                <div class="donor-category">
+                    <h3>Pioneer Circle ($100,000 - $499,999)</h3>
+                    <div class="donor-list">
+                        <p>Dr. Elizabeth & Thomas Chen</p>
+                        <p>HelioCampus, Inc.</p>
+                        <p>Wilson Family Trust</p>
+                        <p>Maria Garcia, '85</p>
+                        <p>The Brooks Foundation</p>
+                        <p>TechStart Innovation Fund</p>
+                        <p>David & Jennifer Lee</p>
+                    </div>
+                </div>
+                
+                <!-- Visionary Donors -->
+                <div class="donor-category">
+                    <h3>Visionary Circle ($25,000 - $99,999)</h3>
+                    <div class="donor-list">
+                        <p>Dr. James Wright</p>
+                        <p>Patricia & Michael Thompson</p>
+                        <p>QuantumLeap Partners LLC</p>
+                        <p>Diane Martinez, '92</p>
+                        <p>The Kumar Foundation</p>
+                        <p>Robert & Susan Taylor</p>
+                        <p>DataForward Solutions</p>
+                        <p>Dr. Christopher & Lisa Park</p>
+                        <p>Samantha Williams, '02</p>
+                        <p>Andrew Johnson</p>
+                        <p>NextGen Technologies</p>
+                        <p>Thomas Brown, '88</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <h2>Ready to Make an Impact?</h2>
+            <p>Our philanthropy team is available to discuss giving opportunities that align with your interests and vision.</p>
+            <div class="contact-buttons">
+                <a href="#" class="cta-button-light">Make a Gift Today</a>
+                <a href="#" class="cta-button-light">Discuss Giving Options</a>
+                <a href="#" class="cta-button-light">Schedule a Meeting</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="current-students.html">For Students</a></li>
+                        <li><a href="faculty.html">For Faculty</a></li>
+                        <li><a href="external-partners.html">For Partners</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="https://www.nyit.edu" target="_blank">NYIT Main Website</a></li>
+                        <li><a href="https://www.linkedin.com/school/new-york-institute-of-technology/" target="_blank">LinkedIn</a></li>
+                        <li><a href="https://twitter.com/nyit" target="_blank">Twitter</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 NYIT AI Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

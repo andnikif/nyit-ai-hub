@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYIT AI Hub - Media & Public</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #0055a2; /* NYIT Blue */
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .logo span {
+            color: #f8c300; /* NYIT Yellow */
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #f8c300; /* NYIT Yellow */
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 85, 162, 0.7), rgba(0, 85, 162, 0.9)), url('https://via.placeholder.com/1500x600') center/cover no-repeat;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+        
+        .breadcrumb {
+            background-color: #e9e9e9;
+            padding: 10px 0;
+        }
+        
+        .breadcrumb ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        
+        .breadcrumb ul li {
+            display: flex;
+            align-items: center;
+        }
+        
+        .breadcrumb ul li:not(:last-child)::after {
+            content: "›";
+            margin: 0 10px;
+            color: #666;
+        }
+        
+        .breadcrumb ul li a {
+            text-decoration: none;
+            color: #0055a2;
+        }
+        
+        .breadcrumb ul li a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 40px 0;
+        }
+        
+        .section-title {
+            margin-bottom: 30px;
+        }
+        
+        .section-title h2 {
+            font-size: 32px;
+            color: #0055a2;
+            margin-bottom: 10px;
+        }
+        
+        .section-title p {
+            color: #666;
+            font-size: 18px;
+        }
+        
+        /* News Section */
+        .news-section {
+            margin-bottom: 60px;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .news-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .news-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .news-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .news-date {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .news-content h3 {
+            margin-top: 0;
+            color: #0055a2;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        
+        .news-content p {
+            color: #666;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: #0055a2;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            text-align: center;
+            align-self: flex-start;
+        }
+        
+        .cta-button:hover {
+            background-color: #003d75;
+        }
+        
+        /* Experts Section */
+        .experts-section {
+            background-color: #f9f9f9;
+            padding: 60px 0;
+            margin-bottom: 60px;
+        }
+        
+        .experts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .expert-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .expert-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .expert-img {
+            height: 200px;
+            width: 200px;
+            border-radius: 50%;
+            margin: 30px auto 20px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .expert-info {
+            padding: 0 25px 25px;
+        }
+        
+        .expert-info h3 {
+            margin-top: 0;
+            color: #0055a2;
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+        
+        .expert-title {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        
+        .expert-area {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .expert-contact {
+            margin-top: 20px;
+        }
+        
+        .expert-contact a {
+            color: #0055a2;
+            text-decoration: none;
+            font-size: 14px;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .expert-contact a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Events Section */
+        .events-section {
+            margin-bottom: 60px;
+        }
+        
+        .events-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        .event-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: flex;
+            transition: transform 0.3s;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .event-date {
+            min-width: 120px;
+            background-color: #0055a2;
+            color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .event-month {
+            font-size: 18px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+        
+        .event-day {
+            font-size: 32px;
+            font-weight: bold;
+            line-height: 1;
+        }
+        
+        .event-year {
+            font-size: 16px;
+            margin-top: 5px;
+        }
+        
+        .event-content {
+            padding: 25px;
+            flex-grow: 1;
+        }
+        
+        .event-content h3 {
+            margin-top: 0;
+            color: #0055a2;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        
+        .event-location {
+            color: #666;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .event-location-icon {
+            margin-right: 5px;
+        }
+        
+        .event-content p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            background-color: #0055a2;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .contact-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .contact-section p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .contact-options {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+        
+        .contact-option {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .contact-option h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: #f8c300;
+        }
+        
+        .contact-option p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .cta-button-light {
+            display: inline-block;
+            background-color: white;
+            color: #0055a2;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button-light:hover {
+            background-color: #f8c300;
+            color: #0055a2;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #00294d;
+            color: white;
+            padding: 40px 0;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            color: #f8c300;
+            margin-bottom: 20px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .event-card {
+                flex-direction: column;
+            }
+            
+            .event-date {
+                width: 100%;
+                padding: 15px;
+                flex-direction: row;
+                justify-content: center;
+            }
+            
+            .event-month, .event-day, .event-year {
+                margin: 0 5px;
+            }
+            
+            .contact-options {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">NYIT <span>AI Hub</span></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Media & Public Resources</h1>
+            <p>Stay informed about the latest AI developments, research breakthroughs, and educational initiatives at NYIT.</p>
+            <a href="#news" class="cta-button">Latest News</a>
+        </div>
+    </section>
+    
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li>Media & Public</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- News Section -->
+    <section id="news" class="main-content news-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Latest News & Press Releases</h2>
+                <p>Discover the most recent updates and announcements from NYIT's AI Hub.</p>
+            </div>
+            
+            <div class="news-grid">
+                <!-- News Item 1 -->
+                <div class="news-card">
+                    <div class="news-img" style="background-image: url('https://via.placeholder.com/500x300')"></div>
+                    <div class="news-content">
+                        <div class="news-date">March 15, 2025</div>
+                        <h3>NYIT AI Research Team Awarded $1.2M Grant for Healthcare Innovation</h3>
+                        <p>The National Science Foundation has awarded NYIT's AI Research Team a $1.2 million grant to develop new AI-powered diagnostic tools for early disease detection.</p>
+                        <a href="#" class="cta-button">Read Full Story</a>
+                    </div>
+                </div>
+                
+                <!-- News Item 2 -->
+                <div class="news-card">
+                    <div class="news-img" style="background-image: url('https://via.placeholder.com/500x300')"></div>
+                    <div class="news-content">
+                        <div class="news-date">February 28, 2025</div>
+                        <h3>NYIT Students Win International AI Competition</h3>
+                        <p>A team of NYIT computer science students took first place at the Global AI Solutions Challenge, beating out competitors from 42 universities worldwide.</p>
+                        <a href="#" class="cta-button">Read Full Story</a>
+                    </div>
+                </div>
+                
+                <!-- News Item 3 -->
+                <div class="news-card">
+                    <div class="news-img" style="background-image: url('https://via.placeholder.com/500x300')"></div>
+                    <div class="news-content">
+                        <div class="news-date">February 10, 2025</div>
+                        <h3>New AI Ethics Initiative Launches at NYIT</h3>
+                        <p>NYIT has established a cross-disciplinary AI Ethics Initiative to promote responsible AI development and address ethical challenges in artificial intelligence.</p>
+                        <a href="#" class="cta-button">Read Full Story</a>
+                    </div>
+                </div>
+                
+                <!-- News Item 4 -->
+                <div class="news-card">
+                    <div class="news-img" style="background-image: url('https://via.placeholder.com/500x300')"></div>
+                    <div class="news-content">
+                        <div class="news-date">January 22, 2025</div>
+                        <h3>NYIT Partners with NVIDIA on Next-Gen AI Lab</h3>
+                        <p>NYIT and NVIDIA have announced a strategic partnership to establish a state-of-the-art AI research laboratory with cutting-edge GPU infrastructure.</p>
+                        <a href="#" class="cta-button">Read Full Story</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Experts Section -->
+    <section class="experts-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Meet Our AI Experts</h2>
+                <p>Connect with NYIT faculty experts available for media interviews, speaking engagements, and expert commentary.</p>
+            </div>
+            
+            <div class="experts-grid">
+                <!-- Expert 1 -->
+                <div class="expert-card">
+                    <div class="expert-img" style="background-image: url('https://via.placeholder.com/300')"></div>
+                    <div class="expert-info">
+                        <h3>Dr. Sarah Chen</h3>
+                        <div class="expert-title">Professor of Computer Science</div>
+                        <div class="expert-area">Expertise: Machine Learning, Neural Networks</div>
+                        <p>Dr. Chen leads NYIT's Machine Learning Lab and has published over 50 papers on deep learning applications.</p>
+                        <div class="expert-contact">
+                            <a href="mailto:schen@nyit.edu">schen@nyit.edu</a>
+                            <a href="tel:5165551234">516-555-1234</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Expert 2 -->
+                <div class="expert-card">
+                    <div class="expert-img" style="background-image: url('https://via.placeholder.com/300')"></div>
+                    <div class="expert-info">
+                        <h3>Dr. Michael Rodriguez</h3>
+                        <div class="expert-title">Associate Professor of Data Science</div>
+                        <div class="expert-area">Expertise: AI Ethics, Algorithmic Bias</div>
+                        <p>Dr. Rodriguez specializes in ethical considerations of AI development and implementation in society.</p>
+                        <div class="expert-contact">
+                            <a href="mailto:mrodriguez@nyit.edu">mrodriguez@nyit.edu</a>
+                            <a href="tel:5165552345">516-555-2345</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Expert 3 -->
+                <div class="expert-card">
+                    <div class="expert-img" style="background-image: url('https://via.placeholder.com/300')"></div>
+                    <div class="expert-info">
+                        <h3>Dr. Aisha Patel</h3>
+                        <div class="expert-title">Assistant Professor of Engineering</div>
+                        <div class="expert-area">Expertise: Computer Vision, Robotics</div>
+                        <p>Dr. Patel's research focuses on advancing computer vision systems for autonomous vehicles and robotics.</p>
+                        <div class="expert-contact">
+                            <a href="mailto:apatel@nyit.edu">apatel@nyit.edu</a>
+                            <a href="tel:5165553456">516-555-3456</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Expert 4 -->
+                <div class="expert-card">
+                    <div class="expert-img" style="background-image: url('https://via.placeholder.com/300')"></div>
+                    <div class="expert-info">
+                        <h3>Dr. James Wilson</h3>
+                        <div class="expert-title">Professor of Business Analytics</div>
+                        <div class="expert-area">Expertise: AI in Business, Predictive Analytics</div>
+                        <p>Dr. Wilson researches how AI transforms business operations and decision-making processes.</p>
+                        <div class="expert-contact">
+                            <a href="mailto:jwilson@nyit.edu">jwilson@nyit.edu</a>
+                            <a href="tel:5165554567">516-555-4567</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Public Events Section -->
+    <section class="events-section main-content">
+        <div class="container">
+            <div class="section-title">
+                <h2>Upcoming Public Events</h2>
+                <p>Join us for these upcoming AI-focused events open to the public and media.</p>
+            </div>
+            
+            <div class="events-list">
+                <!-- Event 1 -->
+                <div class="event-card">
+                    <div class="event-date">
+                        <div class="event-month">Apr</div>
+                        <div class="event-day">15</div>
+                        <div class="event-year">2025</div>
+                    </div>
+                    <div class="event-content">
+                        <h3>The Future of AI in Healthcare Symposium</h3>
+                        <div class="event-location">
+                            <span class="event-location-icon">📍</span>
+                            <span>NYIT Auditorium, Main Campus</span>
+                        </div>
+                        <p>Join leading healthcare professionals and AI researchers for a discussion on how artificial intelligence is transforming modern medicine. Open to the public with registration required.</p>
+                        <a href="#" class="cta-button">Register</a>
+                    </div>
+                </div>
+                
+                <!-- Event 2 -->
+                <div class="event-card">
+                    <div class="event-date">
+                        <div class="event-month">May</div>
+                        <div class="event-day">8</div>
+                        <div class="event-year">2025</div>
+                    </div>
+                    <div class="event-content">
+                        <h3>AI Ethics Public Forum</h3>
+                        <div class="event-location">
+                            <span class="event-location-icon">📍</span>
+                            <span>NYIT Conference Center</span>
+                        </div>
+                        <p>A community discussion addressing ethical challenges and considerations in AI development and implementation. Panel features experts from technology, philosophy, and public policy.</p>
+                        <a href="#" class="cta-button">Register</a>
+                    </div>
+                </div>
+                
+                <!-- Event 3 -->
+                <div class="event-card">
+                    <div class="event-date">
+                        <div class="event-month">Jun</div>
+                        <div class="event-day">21</div>
+                        <div class="event-year">2025</div>
+                    </div>
+                    <div class="event-content">
+                        <h3>AI & Art Exhibition Opening</h3>
+                        <div class="event-location">
+                            <span class="event-location-icon">📍</span>
+                            <span>NYIT Gallery of Art</span>
+                        </div>
+                        <p>Experience the intersection of technology and creativity at this exhibition showcasing works created through the collaboration of AI systems and human artists. Reception included.</p>
+                        <a href="#" class="cta-button">Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <h2>Media & Public Inquiries</h2>
+            <p>Get in touch with our team for interview requests, press materials, or information about public events.</p>
+            
+            <div class="contact-options">
+                <div class="contact-option">
+                    <h3>Media Relations</h3>
+                    <p>For press inquiries, interview requests, and media resources.</p>
+                    <a href="mailto:media@nyit.edu" class="cta-button-light">media@nyit.edu</a>
+                </div>
+                
+                <div class="contact-option">
+                    <h3>Public Events</h3>
+                    <p>Information about upcoming lectures, symposiums, and community events.</p>
+                    <a href="mailto:events@nyit.edu" class="cta-button-light">events@nyit.edu</a>
+                </div>
+                
+                <div class="contact-option">
+                    <h3>Expert Commentary</h3>
+                    <p>Connect with NYIT faculty experts for informed perspectives on AI topics.</p>
+                    <a href="mailto:experts@nyit.edu" class="cta-button-light">experts@nyit.edu</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="current-students.html">For Students</a></li>
+                        <li><a href="faculty.html">For Faculty</a></li>
+                        <li><a href="external-partners.html">For Partners</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="https://www.nyit.edu" target="_blank">NYIT Main Website</a></li>
+                        <li><a href="https://www.linkedin.com/school/new-york-institute-of-technology/" target="_blank">LinkedIn</a></li>
+                        <li><a href="https://twitter.com/nyit" target="_blank">Twitter</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 NYIT AI Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
