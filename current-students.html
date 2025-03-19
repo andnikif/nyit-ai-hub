@@ -214,24 +214,26 @@
         .success-stories {
             background-color: #f9f9f9;
             padding: 60px 0;
+            margin-bottom: 60px;
         }
         
         .story-carousel {
             margin-top: 30px;
-            display: flex;
-            overflow-x: auto;
-            padding-bottom: 20px;
-            scroll-snap-type: x mandatory;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
         }
         
         .story-card {
-            flex: 0 0 350px;
-            margin-right: 30px;
             background-color: white;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            scroll-snap-align: start;
+            transition: transform 0.3s;
+        }
+        
+        .story-card:hover {
+            transform: translateY(-5px);
         }
         
         .story-img {
@@ -247,10 +249,162 @@
         .story-content h3 {
             margin-top: 0;
             color: #0055a2;
+            font-size: 22px;
+            margin-bottom: 10px;
         }
         
         .story-content p {
             color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .student-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .student-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+            margin-right: 15px;
+        }
+        
+        .student-details h4 {
+            margin: 0;
+            color: #0055a2;
+        }
+        
+        .student-details p {
+            margin: 5px 0 0;
+            color: #777;
+            font-size: 14px;
+        }
+        
+        /* Projects Showcase */
+        .projects-showcase {
+            margin-bottom: 60px;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .project-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .project-content {
+            padding: 20px;
+        }
+        
+        .project-type {
+            display: inline-block;
+            background-color: #f0f0f0;
+            color: #0055a2;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .project-content h3 {
+            margin-top: 0;
+            color: #0055a2;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        
+        .project-content p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        /* Clubs & Organizations */
+        .clubs-section {
+            background-color: #f0f0f0;
+            padding: 60px 0;
+            margin-bottom: 60px;
+        }
+        
+        .clubs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .club-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .club-logo {
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f9f9f9;
+        }
+        
+        .club-logo span {
+            font-size: 48px;
+            color: #0055a2;
+        }
+        
+        .club-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .club-content h3 {
+            margin-top: 0;
+            color: #0055a2;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        
+        .club-content p {
+            color: #666;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        
+        .meeting-info {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+        
+        .meeting-info p {
+            margin: 0;
+            font-size: 14px;
         }
         
         /* Call to Action Section */
@@ -348,7 +502,10 @@
                 font-size: 32px;
             }
             
-            .resource-grid {
+            .resource-grid,
+            .story-carousel,
+            .projects-grid,
+            .clubs-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -466,3 +623,228 @@
             </div>
         </div>
     </section>
+    
+    <!-- Success Stories Section -->
+    <section class="success-stories">
+        <div class="container">
+            <div class="section-title">
+                <h2>Student Success Stories</h2>
+                <p>Learn how NYIT students are leveraging AI resources to achieve remarkable results.</p>
+            </div>
+            
+            <div class="story-carousel">
+                <!-- Story Card 1 -->
+                <div class="story-card">
+                    <div class="story-img" style="background-image: url('https://via.placeholder.com/500x300')"></div>
+                    <div class="story-content">
+                        <div class="student-info">
+                            <div class="student-avatar" style="background-image: url('https://via.placeholder.com/100')"></div>
+                            <div class="student-details">
+                                <h4>Jessica Chen</h4>
+                                <p>Computer Science, Class of 2026</p>
+                            </div>
+                        </div>
+                        <h3>From Classroom to Conference</h3>
+                        <p>Jessica's machine learning project from CS 460 was accepted for presentation at the International AI Conference in San Francisco, where she networked with industry leaders and received a job offer from a leading tech company.</p>
+                        <a href="#" class="cta-button">Read Jessica's Story</a>
+                    </div>
+                </div>
+                
+                <!-- Story Card 2 -->
+                <div class="story-card">
+                    <div class="story-img" style="background-image: url('https://via.placeholder.com/500x300')"></div>
+                    <div class="story-content">
+                        <div class="student-info">
+                            <div class="student-avatar" style="background-image: url('https://via.placeholder.com/100')"></div>
+                            <div class="student-details">
+                                <h4>Marcus Johnson</h4>
+                                <p>Business Administration, Class of 2025</p>
+                            </div>
+                        </div>
+                        <h3>AI-Powered Startup Success</h3>
+                        <p>Marcus utilized the NYIT AI Hub's resources to develop a natural language processing tool for his startup that analyzes customer feedback. His company recently secured $500,000 in seed funding from investors impressed by the technology.</p>
+                        <a href="#" class="cta-button">Read Marcus's Story</a>
+                    </div>
+                </div>
+                
+                <!-- Story Card 3 -->
+                <div class="story-card">
+                    <div class="story-img" style="background-image: url('https://via.placeholder.com/500x300')"></div>
+                    <div class="story-content">
+                        <div class="student-info">
+                            <div class="student-avatar" style="background-image: url('https://via.placeholder.com/100')"></div>
+                            <div class="student-details">
+                                <h4>Sophia Rodriguez</h4>
+                                <p>Biomedical Engineering, Class of 2024</p>
+                            </div>
+                        </div>
+                        <h3>Breakthrough in Medical Imaging</h3>
+                        <p>Sophia's interdisciplinary project using AI for early cancer detection in medical images won the NYIT Innovation Award and led to an internship at Memorial Sloan Kettering Cancer Center, where she continues to develop her technology.</p>
+                        <a href="#" class="cta-button">Read Sophia's Story</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Student Projects Showcase -->
+    <section class="projects-showcase main-content">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Student Projects</h2>
+                <p>Explore innovative AI projects created by NYIT students using Hub resources.</p>
+            </div>
+            
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-img" style="background-image: url('https://via.placeholder.com/500x300')"></div>
+                    <div class="project-content">
+                        <span class="project-type">Computer Vision</span>
+                        <h3>Smart Campus Navigation</h3>
+                        <p>A mobile app that uses computer vision and augmented reality to help students navigate campus buildings and find classrooms, with real-time occupancy information.</p>
+                        <a href="#" class="cta-button">View Project Details</a>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-img" style="background-image: url('https://via.placeholder.com/500x300')"></div>
+                    <div class="project-content">
+                        <span class="project-type">Natural Language Processing</span>
+                        <h3>Automated Research Assistant</h3>
+                        <p>An AI tool that helps researchers quickly summarize academic papers, extract key findings, and identify connections between different research studies.</p>
+                        <a href="#" class="cta-button">View Project Details</a>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-img" style="background-image: url('https://via.placeholder.com/500x300')"></div>
+                    <div class="project-content">
+                        <span class="project-type">Robotics</span>
+                        <h3>Autonomous Delivery Robot</h3>
+                        <p>A small-scale robotic system that autonomously navigates campus pathways to deliver items between buildings, using AI for obstacle avoidance and route optimization.</p>
+                        <a href="#" class="cta-button">View Project Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- AI Clubs & Organizations -->
+    <section class="clubs-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>AI Clubs & Organizations</h2>
+                <p>Connect with fellow AI enthusiasts through these student-led groups and initiatives.</p>
+            </div>
+            
+            <div class="clubs-grid">
+                <!-- Club 1 -->
+                <div class="club-card">
+                    <div class="club-logo">
+                        <span>🤖</span>
+                    </div>
+                    <div class="club-content">
+                        <h3>NYIT AI Society</h3>
+                        <p>Our largest AI-focused student organization brings together students from all majors interested in artificial intelligence through workshops, guest speakers, and collaborative projects.</p>
+                        <div class="meeting-info">
+                            <p><strong>Meetings:</strong> Tuesdays, 5:00 PM, Tech Building 305</p>
+                            <p><strong>President:</strong> Alex Kim (akim12@nyit.edu)</p>
+                        </div>
+                        <a href="#" class="cta-button">Join AI Society</a>
+                    </div>
+                </div>
+                
+                <!-- Club 2 -->
+                <div class="club-card">
+                    <div class="club-logo">
+                        <span>💻</span>
+                    </div>
+                    <div class="club-content">
+                        <h3>Machine Learning Club</h3>
+                        <p>Focused on practical applications of machine learning algorithms, this club offers peer-led training sessions, coding challenges, and participation in ML competitions.</p>
+                        <div class="meeting-info">
+                            <p><strong>Meetings:</strong> Thursdays, 6:30 PM, Engineering Hall 220</p>
+                            <p><strong>President:</strong> Maya Johnson (mjohnson@nyit.edu)</p>
+                        </div>
+                        <a href="#" class="cta-button">Join ML Club</a>
+                    </div>
+                </div>
+                
+                <!-- Club 3 -->
+                <div class="club-card">
+                    <div class="club-logo">
+                        <span>🎮</span>
+                    </div>
+                    <div class="club-content">
+                        <h3>AI in Gaming Collective</h3>
+                        <p>Explores the intersection of artificial intelligence and game development, with hands-on projects creating AI-powered games and intelligent NPC behavior systems.</p>
+                        <div class="meeting-info">
+                            <p><strong>Meetings:</strong> Wednesdays, 4:00 PM, Digital Arts Lab</p>
+                            <p><strong>President:</strong> Jordan Lee (jlee45@nyit.edu)</p>
+                        </div>
+                        <a href="#" class="cta-button">Join Gaming Collective</a>
+                    </div>
+                </div>
+                
+                <!-- Club 4 -->
+                <div class="club-card">
+                    <div class="club-logo">
+                        <span>🌐</span>
+                    </div>
+                    <div class="club-content">
+                        <h3>AI for Social Good</h3>
+                        <p>Dedicated to applying AI technology to address social challenges and environmental issues through community-focused projects and partnerships with nonprofit organizations.</p>
+                        <div class="meeting-info">
+                            <p><strong>Meetings:</strong> Mondays, 5:30 PM, Student Center 114</p>
+                            <p><strong>President:</strong> Jasmine Singh (jsingh@nyit.edu)</p>
+                        </div>
+                        <a href="#" class="cta-button">Join AI for Social Good</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Take Your AI Skills to the Next Level?</h2>
+            <p>Schedule a one-on-one consultation with our AI Hub advisors to discuss your interests, goals, and how we can help you achieve them.</p>
+            <a href="#" class="cta-button-light">Book a Consultation</a>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="faculty.html">For Faculty</a></li>
+                        <li><a href="external-partners.html">For Partners</a></li>
+                        <li><a href="donors.html">For Donors</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="https://www.nyit.edu" target="_blank">NYIT Main Website</a></li>
+                        <li><a href="https://www.linkedin.com/school/new-york-institute-of-technology/" target="_blank">LinkedIn</a></li>
+                        <li><a href="https://twitter.com/nyit" target="_blank">Twitter</a></li>
+                    </ul>
+                </div>
+            </div>
